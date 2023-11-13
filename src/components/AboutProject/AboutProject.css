@@ -1,0 +1,46 @@
+.about-project {
+  background: #202020;
+  padding: 110px 70px;
+}
+
+.about-project__text-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto max-content;
+  margin-top: 70px;
+  grid-auto-flow: column;
+  row-gap: 26px;
+}
+
+.about-project__subtitle {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.about-project__timeline-container {
+  margin: 110px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto auto;
+  row-gap: 14px;
+}
+
+.about-project__timeline-item {
+  text-align: center;
+  line-height: 36px;
+  color: #8b8b8b;
+}
+
+.about-project__timeline-item:nth-of-type(1) {
+  background: #3ddc84;
+  color: #000;
+}
+
+.about-project__timeline-item:nth-of-type(2) {
+  background: #303030;
+  color: #fff;
+}

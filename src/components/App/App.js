@@ -1,12 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Router, Route } from "react-router-dom";
 import Header from "../Header/Header";
+import { Route, Routes } from "react-router";
+import Main from "../Main/Main";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header isLoggedIn={false} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
     </div>
   );
 }

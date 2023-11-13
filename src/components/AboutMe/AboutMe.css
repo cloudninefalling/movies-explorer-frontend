@@ -1,0 +1,69 @@
+.about-me {
+  background: #202020;
+  padding: 110px 70px 100px;
+}
+
+.about-me__grid {
+  margin-top: 66px;
+  display: grid;
+  grid-template-areas:
+    "name image"
+    ". image"
+    "bio image"
+    ". image"
+    "description image"
+    ". image"
+    "link image";
+  grid-template-rows: min-content 18px min-content 26px min-content auto min-content;
+}
+
+.about-me__image {
+  grid-area: image;
+  border-radius: 10px;
+  background: url("../../images/about-me__photo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 270px;
+  aspect-ratio: 270/327;
+  margin-left: auto;
+}
+
+.about-me__name {
+  grid-area: name;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 116%;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.about-me__bio {
+  grid-area: bio;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 111%;
+  margin: 0;
+}
+
+.about-me__description {
+  max-width: 600px;
+  grid-area: description;
+  font-weight: 400;
+}
+
+.about-me__link {
+  grid-area: link;
+  color: #fff;
+  font-size: 14px;
+  line-height: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.about-me__link:hover {
+  opacity: 0.7;
+}

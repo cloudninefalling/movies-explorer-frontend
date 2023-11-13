@@ -1,0 +1,22 @@
+.nav-tab {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  background: #272727;
+  padding: 24px 0;
+}
+
+.nav-tab__link {
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123%;
+  text-decoration-line: underline;
+  transition: opacity 0.2s ease;
+}
+
+.nav-tab__link:hover {
+  opacity: 0.7;
+}

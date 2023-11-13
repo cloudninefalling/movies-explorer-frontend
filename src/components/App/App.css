@@ -1,0 +1,37 @@
+@import url(../../vendor/fonts/fonts.css);
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app__text-small {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 143%;
+  margin: 0;
+}
+
+.app__section-title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: #dadada solid 1px;
+  margin: 0;
+  height: 60px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
