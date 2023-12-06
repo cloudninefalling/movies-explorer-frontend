@@ -1,65 +1,33 @@
 .header {
   display: flex;
-  background: #073042;
+  background: #202020;
   width: 100%;
   padding: 18px 70px;
   align-items: center;
   gap: 45px;
   box-sizing: border-box;
+  overflow: visible;
+  max-height: 74px;
+  position: relative;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
+.header_bg-blue {
+  background: #073042;
 }
 
 .header__logo {
   background-image: url(../../images/logo.png);
   min-width: 38px;
   aspect-ratio: 1/1;
-}
-
-.header__nav {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-}
-
-.header__nav-link {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  height: 32px;
-  line-height: 32px;
-  font-family: Inter;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
-}
-
-.header__nav-link:hover {
-  opacity: 0.7;
-}
-
-.header__nav-link-image {
-  background-image: url(../../images/header__nav-link_image.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 15px;
-  border-radius: 50%;
-  background-color: #0f4157;
-  width: 26px;
-  aspect-ratio: 1/1;
-  vertical-align: middle;
-  margin-left: 7px;
-  transition: opacity 0.2s ease;
-}
-
-.header__nav-link_accent {
-  border-radius: 3px;
-  background: #3ddc84;
-  width: 76px;
-  text-align: center;
-  color: #000;
-}
-
-.header__nav-link_right {
-  margin-left: auto;
 }

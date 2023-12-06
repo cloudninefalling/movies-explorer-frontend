@@ -21,8 +21,12 @@ export default function AboutProject() {
         </p>
       </div>
       <div className="about-project__timeline-container">
-        <p className="app__text-small about-project__timeline-item">1 неделя</p>
-        <p className="app__text-small about-project__timeline-item">4 недели</p>
+        <p className="app__text-small about-project__timeline-item about-project__timeline-item_padded">
+          1 неделя
+        </p>
+        <p className="app__text-small about-project__timeline-item about-project__timeline-item_padded">
+          4 недели
+        </p>
         <p className="app__text-small about-project__timeline-item">Back-end</p>
         <p className="app__text-small about-project__timeline-item">
           Front-end

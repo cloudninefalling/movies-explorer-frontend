@@ -1,5 +1,4 @@
 .about-project {
-  background: #202020;
   padding: 110px 70px;
 }
 
@@ -10,6 +9,7 @@
   margin-top: 70px;
   grid-auto-flow: column;
   row-gap: 26px;
+  column-gap: 30px;
 }
 
 .about-project__subtitle {
@@ -31,8 +31,10 @@
 
 .about-project__timeline-item {
   text-align: center;
-  line-height: 36px;
   color: #8b8b8b;
+}
+.about-project__timeline-item_padded {
+  line-height: 36px;
 }
 
 .about-project__timeline-item:nth-of-type(1) {
@@ -43,4 +45,48 @@
 .about-project__timeline-item:nth-of-type(2) {
   background: #303030;
   color: #fff;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__timeline-container {
+    margin-top: 93px;
+  }
+
+  .about-project__timeline-item {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .about-project__subtitle {
+    margin-top: 40px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about-project__timeline-container {
+    margin-top: 60px;
+    grid-template-columns: 10fr 18fr;
+  }
+
+  .about-project__timeline-item {
+    font-size: 11px;
+  }
 }

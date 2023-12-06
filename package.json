@@ -1,6 +1,5 @@
 {
   "name": "movies-explorer-frontend",
-  "author": "Dmitrii Shalygin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
