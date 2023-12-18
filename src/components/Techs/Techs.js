@@ -3,9 +3,9 @@ import "./Techs.css";
 export default function Techs() {
   return (
     <section className="techs" id="techs">
-      <h2 className="app__section-title">Технологии</h2>
+      <h2 className="section-title">Технологии</h2>
       <p className="techs__subtitle">7 технологий</p>
-      <p className="app__text-small techs__text-center">
+      <p className="text-small techs__text-center">
         На курсе веб-разработки мы освоили технологии, которые применили в
         дипломном проекте.
       </p>

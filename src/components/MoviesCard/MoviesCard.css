@@ -72,7 +72,7 @@
 }
 
 .movies-card__btn_active {
-  background-image: url(../../images/movies-card__like-button_active.png);
+  background-image: url(../../images/movies-card__like-button_active.svg);
 }
 
 .movies-card__btn_remove {

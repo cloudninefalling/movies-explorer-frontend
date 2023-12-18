@@ -1,6 +1,6 @@
 import "./AuthForm.css";
 import React from "react";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.svg";
 
 export default function AuthForm({
   title,
@@ -19,6 +19,7 @@ export default function AuthForm({
           {fields[field]}
         </label>
         <input
+          placeholder={fields[field]}
           name={field}
           type={field === "password" ? "password" : "text"}
           className={`auth__input ${errors[field] ? "auth__input_red" : ""}`}

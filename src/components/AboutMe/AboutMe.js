@@ -14,7 +14,7 @@ export default function AboutMe() {
 
   return (
     <section className="about-me" id="about-me">
-      <h2 className="app__section-title">Студент</h2>
+      <h2 className="section-title">Студент</h2>
       <div className="about-me__wrapper">
         <div className="about-me__image" />
 
@@ -22,7 +22,7 @@ export default function AboutMe() {
         <p className="about-me__bio">
           Фронтенд-разработчик, {myAge} {ageSuffix()}
         </p>
-        <p className="app__text-small about-me__description">
+        <p className="text-small about-me__description">
           Родился и живу в Санкт-Петербурге, учился в СПбПУ им. Петра Великого
           по направлению "Информатика и вычислительная техника". В свободное
           время люблю слушать и писать музыку, также увлекаюсь чтением книг.

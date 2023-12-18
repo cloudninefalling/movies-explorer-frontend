@@ -6,9 +6,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
   background-color: #202020;
-  margin: auto;
+  margin: 0;
+  width: 100vw;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  box-sizing: border-box;
+  min-width: 100%;
 }
 
 *:focus {
@@ -20,6 +27,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin: auto;
+  max-width: 1280px;
 }
 
 code {
@@ -27,7 +36,7 @@ code {
     monospace;
 }
 
-.app__text-small {
+.text-small {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +44,7 @@ code {
   margin: 0;
 }
 
-.app__section-title {
+.section-title {
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -53,17 +62,17 @@ html {
 }
 
 @media screen and (max-width: 900px) {
-  .app__text-small {
+  .text-small {
     font-size: 12px;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .app__text-small {
+  .text-small {
     font-size: 11px;
     line-height: 145%;
   }
-  .app__section-title {
+  .section-title {
     font-size: 18px;
     letter-spacing: -0.72px;
   }

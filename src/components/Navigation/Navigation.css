@@ -161,7 +161,8 @@
   }
 
   .header__nav-link_active {
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px #fff solid;
     font-weight: 500;
   }
 

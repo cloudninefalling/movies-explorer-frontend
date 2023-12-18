@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-.search-form__form {
+.search-form__searchbar {
   display: flex;
   border-radius: 40px;
   background: #2f2f2f;
@@ -16,8 +16,9 @@
   flex-grow: 1;
   background-color: transparent;
   border: none;
-  color: #8b8b8b;
   font-feature-settings: "clig" off, "liga" off;
+  font-family: "Inter";
+  color: #fff;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;

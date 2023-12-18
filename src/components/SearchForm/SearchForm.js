@@ -23,8 +23,8 @@ export default function SearchForm({ query, setQuery }) {
   }
 
   return (
-    <div className="search-form">
-      <form className="search-form__form" onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
+      <div className="search-form__searchbar">
         <input
           className="search-form__input"
           type="search"
@@ -35,8 +35,8 @@ export default function SearchForm({ query, setQuery }) {
           value={query.value || ""}
         />
         <button className="search-form__submit-btn" aria-label="искать" />
-      </form>
+      </div>
       <FilterCheckbox toggleCheckbox={toggleShortsOnly} />
-    </div>
+    </form>
   );
 }

@@ -30,7 +30,6 @@ export default function MoviesCardList({ movies, isSaved, handleInteraction }) {
       setMoviesShown(maxLength);
     }
   }
-  // todo show less pics on lower widths (8 & 4 on 768 and 320 respectively)
   return (
     <>
       <ul className="movies-card-list">

@@ -27,7 +27,7 @@
 }
 
 .header__logo {
-  background-image: url(../../images/logo.png);
+  background-image: url(../../images/logo.svg);
   min-width: 38px;
   aspect-ratio: 1/1;
 }
