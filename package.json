@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "react-scripts build",
+    "deploy": "scp -r ./build/* cloudninefalling@51.250.30.25:/home/cloudninefalling/movies-explorer/frontend"
   },
   "eslintConfig": {
     "extends": [
