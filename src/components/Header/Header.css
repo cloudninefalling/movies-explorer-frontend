@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  background: #202020;
+  width: 100%;
+  padding: 18px 70px;
+  align-items: center;
+  gap: 45px;
+  box-sizing: border-box;
+  overflow: visible;
+  max-height: 74px;
+  position: relative;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
+.header_bg-blue {
+  background: #073042;
+}
+
+.header__logo {
+  background-image: url(../../images/logo.svg);
+  min-width: 38px;
+  aspect-ratio: 1/1;
+}
