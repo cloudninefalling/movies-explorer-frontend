@@ -28,7 +28,7 @@ export default function Register() {
         />
         <div className="register__subtitle-wrapper">
           <p className="register__text">Уже зарегистрированы?</p>
-          <Link to={"/signup"} className="register__text register__link">
+          <Link to={"/signin"} className="register__text register__link">
             Войти
           </Link>
         </div>

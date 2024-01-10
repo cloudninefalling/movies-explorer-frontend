@@ -103,12 +103,12 @@
 }
 
 @media screen and (max-width: 450px) {
-  .auth__form {
-    max-width: 100%;
+  .auth {
+    width: 100%;
     align-items: center;
     height: 100%;
     max-height: 100%;
-    margin: 30px 0 0;
+    margin: 10px 0 0;
     box-sizing: border-box;
   }
 
@@ -122,11 +122,11 @@
     margin: 50px 0 60px;
   }
 
-  .auth__form {
-    margin: 10px;
-  }
-
   .auth__error-list {
     width: 100%;
+  }
+
+  .auth__submit-btn {
+    margin-bottom: 10px;
   }
 }
