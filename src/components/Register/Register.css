@@ -1,13 +1,24 @@
 .register {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 680px;
+}
+
+.register__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   margin: auto;
-  padding: 25px 0 20px;
-  max-height: 100vh;
+  padding: 20px 0;
+  width: 100%;
 }
 
+.register__subtitle-wrapper {
+  display: flex;
+  gap: 6px;
+}
 .register__text {
   color: #8b8b8b;
   text-align: center;
@@ -32,11 +43,14 @@
 
 @media screen and (max-width: 450px) {
   .register {
-    height: 100vh;
     gap: 14px;
-    padding: 25px 30px 30px;
-    width: 100vw;
+    padding: 25px 30px 10px;
     box-sizing: border-box;
+  }
+
+  .register__wrapper {
+    height: 100%;
+    gap: 4px;
   }
 
   .register__text {

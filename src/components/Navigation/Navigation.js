@@ -29,7 +29,9 @@ export default function Navigation({ isLoggedIn }) {
             <NavLink
               to="/"
               className={({ isActive, isPending }) =>
-                `header__nav-link ${isActive ? "header__nav-link_active" : ""}`
+                `header__nav-link header__nav-link_var-display ${
+                  isActive ? "header__nav-link_active" : ""
+                }`
               }
               onClick={() => setIsChecked(false)}
             >
@@ -55,11 +57,7 @@ export default function Navigation({ isLoggedIn }) {
             </NavLink>
             <NavLink
               to="/profile"
-              className={({ isActive, isPending }) =>
-                `header__nav-link header__nav-link_separator ${
-                  isActive ? "header__nav-link_active" : ""
-                }`
-              }
+              className={`header__nav-link-separator`}
               onClick={() => setIsChecked(false)}
             >
               Аккаунт

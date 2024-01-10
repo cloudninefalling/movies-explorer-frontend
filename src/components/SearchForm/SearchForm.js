@@ -34,7 +34,11 @@ export default function SearchForm({ query, setQuery }) {
           onChange={handleChange}
           value={query.value || ""}
         />
-        <button className="search-form__submit-btn" aria-label="искать" />
+        <button
+          type="button"
+          className="search-form__submit-btn"
+          aria-label="искать"
+        />
       </div>
       <FilterCheckbox toggleCheckbox={toggleShortsOnly} />
     </form>

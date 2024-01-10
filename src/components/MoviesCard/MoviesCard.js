@@ -20,6 +20,7 @@ export default function MoviesCard({ movie, isSaved, handleInteraction }) {
       <p className="movies-card__name">{movie.name}</p>
       {!isSaved ? (
         <button
+          type="button"
           className={`movies-card__btn movies-card__btn_like ${
             isLiked ? "movies-card__btn_active" : ""
           }`}
@@ -28,6 +29,7 @@ export default function MoviesCard({ movie, isSaved, handleInteraction }) {
         />
       ) : (
         <button
+          type="button"
           className={`movies-card__btn movies-card__btn_remove`}
           aria-label="button"
           onClick={handleClick}

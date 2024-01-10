@@ -47,6 +47,7 @@ export default function MoviesCardList({ movies, isSaved, handleInteraction }) {
       </ul>
       {moviesShown < maxLength && (
         <button
+          type="button"
           className="load-more-btn"
           aria-label="button"
           onClick={handleLoadMore}

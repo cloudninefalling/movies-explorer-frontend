@@ -18,6 +18,7 @@
     "link image";
   grid-template-rows: min-content 18px min-content 26px min-content auto min-content;
   column-gap: 50px;
+  width: 100%;
 }
 
 .about-me__image {

@@ -63,6 +63,10 @@
   .portfolio__link {
     border-bottom: 1px solid #e6e6e6;
   }
+
+  .portfolio__link_no-border {
+    border: none;
+  }
 }
 
 @media screen and (max-width: 900px) {

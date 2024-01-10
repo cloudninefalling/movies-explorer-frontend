@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function useForm() {
+export default function useForm(inputCount) {
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
 
@@ -16,7 +16,8 @@ export default function useForm() {
   };
 
   const isValid =
-    Object.keys(values).length > 0 && Object.keys(errors).length === 0;
+    Object.keys(values).length === inputCount &&
+    Object.keys(errors).length === 0;
 
   const validateEmail = (email) => {
     const isValidEmail = emailRegex.test(email);

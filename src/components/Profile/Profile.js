@@ -30,91 +30,101 @@ export default function Profile({ user, handleEditProfile, logOut }) {
 
   return (
     <main className="profile">
-      <h2 className="profile__title">{`Привет, ${user.name}!`}</h2>
-      <form
-        noValidate
-        className="profile__form"
-        onSubmit={handleSubmit}
-        name="profile__form"
-        id="profile__form"
-      >
-        <label htmlFor="form__input_name" className="profile__form-label">
-          Имя
-        </label>
-        {!isRedacting ? (
-          <p className="profile__form-input">{user.name}</p>
-        ) : (
-          <input
-            name="name"
-            id="profile__form-input_name"
-            type="text"
-            className={`profile__form-input ${
-              errors.name ? "profile__form-input_invalid" : ""
-            }`}
-            placeholder="Имя"
-            value={values["name"] || ""}
-            onChange={handleChange}
-            required
-            autoComplete="off"
-          />
-        )}
-        <p className="profile__form-label profile__form-error-msg">
-          {errors.name || ""}
-        </p>
-        <div className="profile__form-separator" />
-        <label htmlFor="form__input_email" className="profile__form-label">
-          Email
-        </label>
-        {!isRedacting ? (
-          <p className="profile__form-input">{user.email}</p>
-        ) : (
-          <input
-            name="email"
-            id="profile__form-input_email"
-            type="email"
-            className={`profile__form-input ${
-              errors.email ? "profile__form-input_invalid" : ""
-            }`}
-            placeholder="Email"
-            value={values["email"] || ""}
-            onChange={handleChange}
-            required
-            autoComplete="off"
-          />
-        )}
-        <p className="profile__form-label profile__form-error-msg">
-          {errors.email || ""}
-        </p>
-      </form>
-      {!isRedacting ? (
-        <div className="profile__button-wrapper">
-          <button
-            type="button"
-            className="profile__button profile__button_redact"
-            onClick={toggleIsRedacting}
-          >
-            Редактировать
-          </button>
-          <button
-            type="button"
-            className="profile__button profile__button_exit"
-            onClick={handleLogOut}
-          >
-            Выйти из аккаунта
-          </button>
-        </div>
-      ) : (
-        <button
-          className={`profile__submit-btn ${
-            Object.keys(errors).length > 0 ? "profile__submit-btn_inactive" : ""
-          }`}
-          form="profile__form"
-          type="submit"
-          onClick={handleSubmit}
+      <section className="profile__wrapper">
+        <h1 className="profile__title">{`Привет, ${user.name}!`}</h1>
+        <form
+          noValidate
+          className="profile__form"
+          onSubmit={handleSubmit}
+          name="profile__form"
+          id="profile__form"
         >
-          Сохранить
-        </button>
-      )}
+          <label
+            htmlFor={isRedacting ? "form__input_name" : undefined}
+            className="profile__form-label"
+          >
+            Имя
+          </label>
+          {!isRedacting ? (
+            <p className="profile__form-input">{user.name}</p>
+          ) : (
+            <input
+              name="name"
+              id="profile__form-input_name"
+              type="text"
+              className={`profile__form-input ${
+                errors.name ? "profile__form-input_invalid" : ""
+              }`}
+              placeholder="Имя"
+              value={values["name"] || ""}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+          )}
+          <p className="profile__form-label profile__form-error-msg">
+            {errors.name || ""}
+          </p>
+          <div className="profile__form-separator" />
+          <label
+            htmlFor={isRedacting ? "form__input_email" : undefined}
+            className="profile__form-label"
+          >
+            Email
+          </label>
+          {!isRedacting ? (
+            <p className="profile__form-input">{user.email}</p>
+          ) : (
+            <input
+              name="email"
+              id="profile__form-input_email"
+              type="email"
+              className={`profile__form-input ${
+                errors.email ? "profile__form-input_invalid" : ""
+              }`}
+              placeholder="Email"
+              value={values["email"] || ""}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+          )}
+          <p className="profile__form-label profile__form-error-msg">
+            {errors.email || ""}
+          </p>
+        </form>
+        {!isRedacting ? (
+          <div className="profile__button-wrapper">
+            <button
+              type="button"
+              className="profile__button profile__button_redact"
+              onClick={toggleIsRedacting}
+            >
+              Редактировать
+            </button>
+            <button
+              type="button"
+              className="profile__button profile__button_exit"
+              onClick={handleLogOut}
+            >
+              Выйти из аккаунта
+            </button>
+          </div>
+        ) : (
+          <button
+            className={`profile__submit-btn ${
+              Object.keys(errors).length > 0
+                ? "profile__submit-btn_inactive"
+                : ""
+            }`}
+            form="profile__form"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Сохранить
+          </button>
+        )}
+      </section>
     </main>
   );
 }

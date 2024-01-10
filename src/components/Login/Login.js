@@ -13,26 +13,28 @@ export default function Login({ handlelogIn }) {
     navigate("/movies");
   };
 
-  const { values, errors, handleChange, isValid } = useForm();
+  const { values, errors, handleChange, isValid } = useForm(2);
 
   return (
     <main className="login">
-      <AuthForm
-        title={"Рады видеть!"}
-        fields={{ email: "Email", password: "Пароль" }}
-        buttonText={"Войти"}
-        handleSubmit={handleSubmit}
-        values={values}
-        handleChange={handleChange}
-        errors={errors}
-        isValid={isValid}
-      />
-      <p className="login__text">
-        Еще не зарегистрированы?{" "}
-        <Link to={"/signup"} className="login__text login__link">
-          Регистрация
-        </Link>
-      </p>
+      <section className="login__wrapper">
+        <AuthForm
+          title={"Рады видеть!"}
+          fields={{ email: "Email", password: "Пароль" }}
+          buttonText={"Войти"}
+          handleSubmit={handleSubmit}
+          values={values}
+          handleChange={handleChange}
+          errors={errors}
+          isValid={isValid}
+        />
+        <div className="login__subtitle-wrapper">
+          <p className="login__text">Еще не зарегистрированы?</p>
+          <Link to={"/signup"} className="login__text login__link">
+            Регистрация
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

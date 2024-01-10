@@ -1,8 +1,14 @@
 .not-found {
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.not-found__wrapper {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: calc(50vh - 104px) 0 60px;
+  padding: calc(50vh - 104px) 0 30px;
   height: 100%;
 }
 
@@ -31,7 +37,7 @@
   line-height: normal;
   background: none;
   border: none;
-  margin: auto 0 0;
+  margin: 184px 0 0;
   padding: 0;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
@@ -42,7 +48,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .not-found {
+  .not-found__wrapper {
     padding: calc(50vh - 60px) 0 30px;
   }
 
@@ -60,5 +66,6 @@
   .not-found__link {
     font-size: 12px;
     line-height: normal;
+    margin: auto 0 0;
   }
 }

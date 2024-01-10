@@ -12,13 +12,15 @@ export default function Movies({ movies, handleInteraction }) {
 
   const moviesFiltered = useFilter(movies, query);
   return (
-    <main className="movies">
-      <SearchForm query={query} setQuery={setQuery} />
-      <MoviesCardList
-        movies={moviesFiltered}
-        handleInteraction={handleInteraction}
-        isSaved={false}
-      />
+    <main>
+      <section className="movies">
+        <SearchForm query={query} setQuery={setQuery} />
+        <MoviesCardList
+          movies={moviesFiltered}
+          handleInteraction={handleInteraction}
+          isSaved={false}
+        />
+      </section>
     </main>
   );
 }
