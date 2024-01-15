@@ -1,0 +1,16 @@
+.movies {
+  padding: 0 70px 80px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 1279px) {
+  .movies {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies {
+    padding: 0 10px;
+  }
+}

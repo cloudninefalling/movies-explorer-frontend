@@ -1,0 +1,36 @@
+.nav-tab {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  background: #272727;
+  padding: 24px 70px;
+}
+
+.nav-tab__link {
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123%;
+  text-decoration: none;
+  border-bottom: 1px #fff solid;
+  transition: opacity 0.2s ease;
+}
+
+.nav-tab__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 650px) {
+  .nav-tab {
+    padding: 25px 53px;
+    gap: 24px;
+  }
+
+  .nav-tab__link {
+    font-size: 11px;
+    font-style: normal;
+    line-height: 145%;
+  }
+}

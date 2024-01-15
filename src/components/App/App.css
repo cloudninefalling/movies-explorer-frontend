@@ -1,0 +1,79 @@
+@import url(../../vendor/fonts/fonts.css);
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  background-color: #202020;
+  margin: 0;
+  width: 100vw;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 100%;
+}
+
+*:focus {
+  outline: 1px #4285f4 solid;
+  outline-offset: 2px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: auto;
+  max-width: 1280px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.text-small {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 143%;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: #dadada solid 1px;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  display: flex;
+}
+
+@media screen and (max-width: 900px) {
+  .text-small {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .text-small {
+    font-size: 11px;
+    line-height: 145%;
+  }
+  .section-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+}

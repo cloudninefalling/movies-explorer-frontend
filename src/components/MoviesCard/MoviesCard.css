@@ -1,0 +1,111 @@
+.movies-card {
+  display: grid;
+  grid-template-areas:
+    "image image"
+    "name like"
+    "duration .";
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: 203px auto auto;
+  max-width: 364px;
+  align-items: center;
+  border-radius: 6px;
+  background: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.movies-card__image {
+  grid-area: image;
+  object-fit: cover;
+  border-radius: 6px;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.movies-card__name {
+  grid-area: name;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0px 0px 0px 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movies-card__duration {
+  grid-area: duration;
+  margin: 0px 0px 16px 16px;
+  color: #8b8b8b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.movies-card__btn {
+  grid-area: like;
+  background: none;
+  border: none;
+  margin: 7px 16px 10px 12px;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.movies-card__btn:focus {
+  border-radius: 50%;
+}
+
+.movies-card__btn_like {
+  background-image: url(../../images/movies-card__like-button.svg);
+}
+
+.movies-card__btn_like:hover {
+  opacity: 0.7;
+}
+
+.movies-card__btn_active {
+  background-image: url(../../images/movies-card__like-button_active.svg);
+}
+
+.movies-card__btn_remove {
+  background-image: url(../../images/movies-card__remove-button.svg);
+  background-size: 10px;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.movies-card:hover .movies-card__btn_remove {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media screen and (max-width: 1279px) {
+  .movies-card {
+    max-width: 339px;
+    grid-template-rows: 190px auto auto;
+  }
+
+  .movies-card__btn {
+    margin-block: 6px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies-card {
+    width: 300px;
+    grid-template-rows: 168px auto auto;
+  }
+  .movies-card__btn {
+    margin-right: 10px;
+  }
+}

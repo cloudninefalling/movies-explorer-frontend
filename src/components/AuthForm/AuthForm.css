@@ -1,0 +1,132 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  max-width: 396px;
+  width: 396px;
+  height: 525px;
+  max-height: 525px;
+}
+
+.auth__error-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.auth__logo {
+  width: 38px;
+  aspect-ratio: 1;
+  background-image: url(../../images/logo.svg);
+}
+
+.auth__title {
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 40px 0 20px;
+}
+
+.auth__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auth__label {
+  display: block;
+  color: #8b8b8b;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 20px 0 10px;
+}
+
+.auth__input {
+  border-radius: 8px;
+  background: #2f2f2f;
+  border: none;
+  padding: 15px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.auth__input_red {
+  color: #ee3465;
+}
+
+.auth__error-msg {
+  color: #ee3465;
+  margin: 10px 0 0;
+  min-height: 12px;
+}
+
+.auth__submit-btn {
+  margin-top: auto;
+  padding: 14px 0;
+  border-radius: 3px;
+  border: none;
+  background: #4285f4;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+  width: 100%;
+
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.auth__submit-btn_inactive {
+  background: #f8f8f8;
+  color: #c2c2c2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.auth__submit-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 450px) {
+  .auth {
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    max-height: 100%;
+    margin: 10px 0 0;
+    box-sizing: border-box;
+  }
+
+  .auth__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .auth__title {
+    margin: 50px 0 60px;
+  }
+
+  .auth__error-list {
+    width: 100%;
+  }
+
+  .auth__submit-btn {
+    margin-bottom: 10px;
+  }
+}
