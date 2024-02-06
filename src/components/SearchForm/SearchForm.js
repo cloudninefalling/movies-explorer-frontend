@@ -2,8 +2,16 @@ import "./SearchForm.css";
 import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function SearchForm({ query, setQuery }) {
+export default function SearchForm({ setQuery, handleSearch, isSaved }) {
+  const getQueryValue = () => {
+    const query = localStorage.getItem("query");
+    return query ? JSON.parse(query).value : "";
+  };
+
   const [isShortsOnly, setIsShortsOnly] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(
+    !isSaved ? getQueryValue() : ""
+  );
 
   const toggleShortsOnly = (isChecked) => {
     setIsShortsOnly(isChecked);
@@ -15,11 +23,18 @@ export default function SearchForm({ query, setQuery }) {
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setQuery({ value: value || "", isShortsOnly });
+    setInputValue(value);
+    isSaved ?? setQuery({ value: inputValue, isShortsOnly });
   };
 
   function handleSubmit(e) {
     e.preventDefault();
+    setQuery({ value: inputValue, isShortsOnly });
+    localStorage.setItem(
+      "query",
+      JSON.stringify({ value: inputValue, isShortsOnly })
+    );
+    if (!localStorage.getItem("movies")) handleSearch();
   }
 
   return (
@@ -32,10 +47,10 @@ export default function SearchForm({ query, setQuery }) {
           name="name"
           autoComplete="off"
           onChange={handleChange}
-          value={query.value || ""}
+          value={inputValue}
         />
         <button
-          type="button"
+          type="submit"
           className="search-form__submit-btn"
           aria-label="искать"
         />

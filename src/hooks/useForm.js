@@ -74,16 +74,17 @@ export default function useForm(inputCount) {
     switch (name) {
       case "name":
         validateName(value);
-        return;
+        break;
       case "email":
         validateEmail(value);
-        return;
+        break;
       case "password":
         validatePassword(value);
-        return;
+        break;
       default:
-        return;
+        break;
     }
+    delete errors.misc;
   };
 
   return {
@@ -91,6 +92,7 @@ export default function useForm(inputCount) {
     setValues,
     handleChange,
     errors,
+    setErrors,
     validate,
     isValid,
   };

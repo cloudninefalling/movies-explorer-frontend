@@ -1,37 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-export default function Profile({ user, handleEditProfile, logOut }) {
+export default function Profile({ handleEditProfile, handleSignOut }) {
   const [isRedacting, setIsRedacting] = React.useState(false);
 
   const navigate = useNavigate();
-  const { handleChange, values, setValues, errors } = useForm();
+  const { handleChange, values, setValues, errors, setErrors } = useForm();
+  const currentUser = useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    setValues(user);
-  }, [user, setValues]);
+    setValues(currentUser);
+  }, [currentUser, setValues]);
 
   const toggleIsRedacting = (desiredState) => {
     setIsRedacting(desiredState);
   };
 
   const handleLogOut = () => {
-    logOut();
-    navigate("/signin");
+    handleSignOut().then(navigate("/signin")).catch(console.log);
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleEditProfile(values);
+    handleEditProfile(values).catch((err) => {
+      setErrors((prev) => ({ ...prev, email: err }));
+    });
     toggleIsRedacting(false);
   }
 
   return (
     <main className="profile">
       <section className="profile__wrapper">
-        <h1 className="profile__title">{`Привет, ${user.name}!`}</h1>
+        <h1 className="profile__title">
+          {currentUser.name ? `Привет, ${currentUser.name}!` : ""}
+        </h1>
         <form
           noValidate
           className="profile__form"
@@ -46,7 +51,7 @@ export default function Profile({ user, handleEditProfile, logOut }) {
             Имя
           </label>
           {!isRedacting ? (
-            <p className="profile__form-input">{user.name}</p>
+            <p className="profile__form-input">{currentUser.name}</p>
           ) : (
             <input
               name="name"
@@ -73,7 +78,7 @@ export default function Profile({ user, handleEditProfile, logOut }) {
             Email
           </label>
           {!isRedacting ? (
-            <p className="profile__form-input">{user.email}</p>
+            <p className="profile__form-input">{currentUser.email}</p>
           ) : (
             <input
               name="email"
@@ -113,7 +118,9 @@ export default function Profile({ user, handleEditProfile, logOut }) {
         ) : (
           <button
             className={`profile__submit-btn ${
-              Object.keys(errors).length > 0
+              Object.keys(errors).length > 0 ||
+              (values.name === currentUser.name &&
+                values.email === currentUser.email)
                 ? "profile__submit-btn_inactive"
                 : ""
             }`}

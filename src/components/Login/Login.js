@@ -4,16 +4,23 @@ import "./Login.css";
 import React from "react";
 import useForm from "../../hooks/useForm";
 
-export default function Login({ handlelogIn }) {
+export default function Login({ handleLogIn }) {
   const navigate = useNavigate();
+
+  const { values, errors, setErrors, handleChange, isValid } = useForm(2);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlelogIn(values);
-    navigate("/movies");
+    handleLogIn(values)
+      .then(() => navigate("/movies", { replace: true }))
+      .catch((err) => {
+        if (err.validation) {
+          setErrors((prev) => ({ ...prev, misc: "Некорректный Email" }));
+          return;
+        }
+        setErrors((prev) => ({ ...prev, misc: err.message }));
+      });
   };
-
-  const { values, errors, handleChange, isValid } = useForm(2);
 
   return (
     <main className="login">

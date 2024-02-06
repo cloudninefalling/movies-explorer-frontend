@@ -1,0 +1,70 @@
+.preloader {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #2f2f2f;
+  position: relative;
+  overflow: hidden;
+}
+
+.preloader__inside {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  border-radius: 50%;
+  animation: gradientChange 0.8s ease infinite alternate;
+  overflow: hidden;
+}
+
+.preloader__even-more-inside {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #2f2f2f;
+  border-radius: 50%;
+  animation: gradientChangeInner 0.8s ease infinite alternate;
+}
+@keyframes gradientChangeInner {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  5% {
+    width: 0%;
+    height: 0%;
+  }
+  95% {
+    width: 90%;
+    height: 90%;
+  }
+  100% {
+    width: 90%;
+    height: 90%;
+  }
+}
+@keyframes gradientChange {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  95% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
