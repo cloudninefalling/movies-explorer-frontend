@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import useWindowWidth from "../../hooks/useWindowWidth";
@@ -16,6 +16,7 @@ export default function MoviesCardList({
 
   const [increment, setIncrement] = React.useState(0);
   const [moviesShown, setMoviesShown] = React.useState(0);
+  const [currentWidth, setCurrentWidth] = React.useState("");
 
   const windowWidth = useWindowWidth();
 
@@ -42,25 +43,32 @@ export default function MoviesCardList({
     });
   };
 
-  useEffect(() => {
-    const getAmountUsingWidth = () => {
-      if (windowWidth < 768) return MOVIES_AMOUNT_BY_WIDTH.small;
-      if (windowWidth < 1280) return MOVIES_AMOUNT_BY_WIDTH.medium;
-      return MOVIES_AMOUNT_BY_WIDTH.large;
-    };
-    const { initial, additional } = getAmountUsingWidth();
+  const parseWidth = useCallback(() => {
+    if (windowWidth < 768) return MOVIES_AMOUNT_BY_WIDTH.small;
+    if (windowWidth < 1280) return MOVIES_AMOUNT_BY_WIDTH.medium;
+    return MOVIES_AMOUNT_BY_WIDTH.large;
+  }, [windowWidth]);
 
+  const setupMoviesListParameters = useCallback(() => {
+    const { initial, additional, width } = parseWidth();
     if (increment !== additional) setIncrement(additional);
-    if (moviesShown < initial) setMoviesShown(initial);
-  }, [windowWidth, increment, moviesShown]);
+    if (width !== currentWidth) {
+      setMoviesShown(initial);
+      setCurrentWidth(width);
+    }
+  }, [parseWidth, currentWidth, increment]);
 
-  function handleLoadMore() {
+  useEffect(() => {
+    setupMoviesListParameters();
+  }, [windowWidth, parseWidth, setupMoviesListParameters]);
+
+  const handleLoadMore = () => {
     if (moviesShown + increment < maxLength) {
       setMoviesShown(moviesShown + increment);
     } else {
       setMoviesShown(maxLength);
     }
-  }
+  };
   return (
     <>
       {!isSaved && isNothingFound ? (
