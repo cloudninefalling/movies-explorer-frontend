@@ -30,10 +30,11 @@ export default function SearchForm({ setQuery, handleSearch, isSaved }) {
   function handleSubmit(e) {
     e.preventDefault();
     setQuery({ value: inputValue, isShortsOnly });
-    localStorage.setItem(
-      "query",
-      JSON.stringify({ value: inputValue, isShortsOnly })
-    );
+    if (!isSaved)
+      localStorage.setItem(
+        "query",
+        JSON.stringify({ value: inputValue, isShortsOnly })
+      );
     if (!localStorage.getItem("movies")) handleSearch();
   }
 
