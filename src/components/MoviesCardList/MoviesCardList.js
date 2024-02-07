@@ -3,6 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import { useEffect } from "react";
+import { MOVIES_AMOUNT_BY_WIDTH } from "../../utils/constants";
 
 export default function MoviesCardList({
   movies,
@@ -43,14 +44,14 @@ export default function MoviesCardList({
 
   useEffect(() => {
     const getAmountUsingWidth = () => {
-      if (windowWidth < 768) return 5;
-      if (windowWidth < 1280) return 8;
-      return 12;
+      if (windowWidth < 768) return MOVIES_AMOUNT_BY_WIDTH.small;
+      if (windowWidth < 1280) return MOVIES_AMOUNT_BY_WIDTH.medium;
+      return MOVIES_AMOUNT_BY_WIDTH.large;
     };
-    const amount = getAmountUsingWidth();
+    const { initial, additional } = getAmountUsingWidth();
 
-    if (increment !== amount) setIncrement(amount);
-    if (moviesShown < amount) setMoviesShown(amount);
+    if (increment !== additional) setIncrement(additional);
+    if (moviesShown < initial) setMoviesShown(initial);
   }, [windowWidth, increment, moviesShown]);
 
   function handleLoadMore() {
