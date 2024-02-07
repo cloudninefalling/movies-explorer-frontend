@@ -8,7 +8,14 @@ export default function SearchForm({ setQuery, handleSearch, isSaved }) {
     return query ? JSON.parse(query).value : "";
   };
 
-  const [isShortsOnly, setIsShortsOnly] = React.useState(false);
+  const getToggleValue = () => {
+    const query = localStorage.getItem("query");
+    return query ? JSON.parse(query).isShortsOnly : false;
+  };
+
+  const [isShortsOnly, setIsShortsOnly] = React.useState(
+    !isSaved ? getToggleValue() : false
+  );
   const [inputValue, setInputValue] = React.useState(
     !isSaved ? getQueryValue() : ""
   );
@@ -30,12 +37,13 @@ export default function SearchForm({ setQuery, handleSearch, isSaved }) {
   function handleSubmit(e) {
     e.preventDefault();
     setQuery({ value: inputValue, isShortsOnly });
-    if (!isSaved)
+    if (!isSaved) {
       localStorage.setItem(
         "query",
         JSON.stringify({ value: inputValue, isShortsOnly })
       );
-    if (!localStorage.getItem("movies")) handleSearch();
+      if (!localStorage.getItem("movies")) handleSearch();
+    }
   }
 
   return (
