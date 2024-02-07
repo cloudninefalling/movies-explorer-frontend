@@ -9,9 +9,8 @@ export default function Login({ handleLogIn }) {
 
   const { values, errors, setErrors, handleChange, isValid } = useForm(2);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleLogIn(values)
+  const handleSubmit = () => {
+    return handleLogIn(values)
       .then(() => navigate("/movies", { replace: true }))
       .catch((err) => {
         if (err.validation) {

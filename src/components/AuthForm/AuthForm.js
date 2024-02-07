@@ -12,6 +12,8 @@ export default function AuthForm({
   handleChange,
   isValid,
 }) {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
   const renderInputs = Object.keys(fields).map((field) => {
     return (
       <div key={field} className="auth__input-wrapper">
@@ -32,6 +34,12 @@ export default function AuthForm({
       </div>
     );
   });
+
+  const submitForm = (e) => {
+    setIsSubmitting(true);
+    e.preventDefault();
+    handleSubmit().finally(() => setIsSubmitting(false));
+  };
 
   const fieldOrder = (field) => {
     switch (field) {
@@ -63,7 +71,7 @@ export default function AuthForm({
       className="auth"
       name="auth__form"
       id="auth__form"
-      onSubmit={handleSubmit}
+      onSubmit={submitForm}
     >
       <Link to={"/"} className="auth__logo" />
       <h1 className="auth__title">{title}</h1>
@@ -71,7 +79,7 @@ export default function AuthForm({
       <ul className="auth__error-list">{renderErrors}</ul>
       <button
         className={`auth__submit-btn ${
-          !isValid ? "auth__submit-btn_inactive" : ""
+          !isValid || isSubmitting ? "auth__submit-btn_inactive" : ""
         }`}
         form="auth__form"
         type="submit"

@@ -6,6 +6,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function Profile({ handleEditProfile, handleSignOut }) {
   const [isRedacting, setIsRedacting] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const navigate = useNavigate();
   const { handleChange, values, setValues, errors, setErrors } = useForm();
@@ -25,9 +26,12 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleEditProfile(values).catch((err) => {
-      setErrors((prev) => ({ ...prev, email: err }));
-    });
+    setIsSubmitting(true);
+    handleEditProfile(values)
+      .catch((err) => {
+        setErrors((prev) => ({ ...prev, email: err }));
+      })
+      .finally(() => setIsSubmitting(false));
     toggleIsRedacting(false);
   }
 
@@ -120,7 +124,8 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
             className={`profile__submit-btn ${
               Object.keys(errors).length > 0 ||
               (values.name === currentUser.name &&
-                values.email === currentUser.email)
+                values.email === currentUser.email) ||
+              isSubmitting
                 ? "profile__submit-btn_inactive"
                 : ""
             }`}

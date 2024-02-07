@@ -11,9 +11,8 @@ export default function Register({ handleLogIn }) {
   const navigate = useNavigate();
 
   const { values, errors, setErrors, handleChange, isValid } = useForm(3);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signUp(values)
+  const handleSubmit = () => {
+    return signUp(values)
       .then(() =>
         handleLogIn(values).then(() => navigate("/movies", { replace: true }))
       )
