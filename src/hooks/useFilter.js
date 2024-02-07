@@ -1,8 +1,6 @@
 export default function useFilter(moviesArray, { value, isShortsOnly }) {
   if (moviesArray === -1) return -1;
 
-  if (!value) return [];
-
   const movies = moviesArray.filter((movie) => {
     return (
       (movie.nameRU.toLowerCase().includes(value.toLowerCase()) ||

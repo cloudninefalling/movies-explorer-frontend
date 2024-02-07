@@ -62,7 +62,7 @@ export default function MoviesCardList({
   }
   return (
     <>
-      {isNothingFound ? (
+      {!isSaved && isNothingFound ? (
         renderNothingFound()
       ) : movies === -1 ? (
         renderServerError()
