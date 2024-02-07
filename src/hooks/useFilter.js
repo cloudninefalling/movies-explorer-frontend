@@ -1,3 +1,5 @@
+import { SHORT_MOVIE_MAX_DURATION } from "../utils/constants";
+
 export default function useFilter(moviesArray, { value, isShortsOnly }) {
   if (moviesArray === -1) return -1;
 
@@ -5,7 +7,7 @@ export default function useFilter(moviesArray, { value, isShortsOnly }) {
     return (
       (movie.nameRU.toLowerCase().includes(value.toLowerCase()) ||
         movie.nameEN.toLowerCase().includes(value.toLowerCase())) &&
-      (!isShortsOnly || movie.duration < 40)
+      (!isShortsOnly || movie.duration < SHORT_MOVIE_MAX_DURATION)
     );
   });
 
