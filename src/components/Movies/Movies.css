@@ -1,6 +1,5 @@
 .movies {
   padding: 0 70px 80px;
-  gap: 80px;
   display: flex;
   flex-direction: column;
 }
