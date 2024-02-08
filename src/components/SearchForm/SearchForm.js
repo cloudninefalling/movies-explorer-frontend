@@ -2,7 +2,7 @@ import "./SearchForm.css";
 import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function SearchForm({ setQuery, handleSearch, isSaved }) {
+export default function SearchForm({ query, setQuery, handleSearch, isSaved }) {
   const getQueryValue = () => {
     const query = localStorage.getItem("query");
     return query ? JSON.parse(query).value : "";
@@ -26,6 +26,10 @@ export default function SearchForm({ setQuery, handleSearch, isSaved }) {
       ...prev,
       isShortsOnly: isChecked,
     }));
+    localStorage.setItem(
+      "query",
+      JSON.stringify({ value: query.value, isShortsOnly: isChecked })
+    );
   };
 
   const handleChange = (event) => {
@@ -64,7 +68,10 @@ export default function SearchForm({ setQuery, handleSearch, isSaved }) {
           aria-label="искать"
         />
       </div>
-      <FilterCheckbox toggleCheckbox={toggleShortsOnly} />
+      <FilterCheckbox
+        toggleCheckbox={toggleShortsOnly}
+        isChecked={isShortsOnly}
+      />
     </form>
   );
 }
