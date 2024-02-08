@@ -31,6 +31,7 @@ export default function Movies({
         movies={moviesFiltered}
         savedMovies={savedMovies}
         handleInteraction={handleInteraction}
+        query={query}
       />
     );
   };

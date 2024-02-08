@@ -10,6 +10,7 @@ export default function MoviesCardList({
   savedMovies,
   isSaved,
   handleInteraction,
+  query,
 }) {
   const maxLength = movies.length;
   const isNothingFound = maxLength === 0;
@@ -51,12 +52,14 @@ export default function MoviesCardList({
 
   const setupMoviesListParameters = useCallback(() => {
     const { initial, additional, width } = parseWidth();
-    if (increment !== additional) setIncrement(additional);
+    if (increment !== additional) {
+      setIncrement(additional);
+    }
+    setMoviesShown(initial);
     if (width !== currentWidth) {
-      setMoviesShown(initial);
       setCurrentWidth(width);
     }
-  }, [parseWidth, currentWidth, increment]);
+  }, [parseWidth, currentWidth, increment, query]);
 
   useEffect(() => {
     setupMoviesListParameters();

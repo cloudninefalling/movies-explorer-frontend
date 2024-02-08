@@ -24,6 +24,7 @@ export default function SavedMovies({ movies, handleInteraction, isLoading }) {
             savedMovies={moviesFiltered}
             isSaved={true}
             handleInteraction={handleInteraction}
+            query={query}
           />
         )}
       </section>
