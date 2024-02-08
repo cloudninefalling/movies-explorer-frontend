@@ -9,7 +9,15 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const navigate = useNavigate();
-  const { handleChange, values, setValues, errors, setErrors } = useForm();
+  const {
+    handleChange,
+    values,
+    setValues,
+    errors,
+    setErrors,
+    comment,
+    setComment,
+  } = useForm();
   const currentUser = useContext(CurrentUserContext);
 
   React.useEffect(() => {
@@ -28,11 +36,14 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
     e.preventDefault();
     setIsSubmitting(true);
     handleEditProfile(values)
+      .then(() => {
+        toggleIsRedacting(false);
+        setComment("Профиль успешно обновлен");
+      })
       .catch((err) => {
-        setErrors((prev) => ({ ...prev, email: err }));
+        setErrors((prev) => ({ ...prev, misc: err }));
       })
       .finally(() => setIsSubmitting(false));
-    toggleIsRedacting(false);
   }
 
   return (
@@ -69,6 +80,7 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
               onChange={handleChange}
               required
               autoComplete="off"
+              autoFocus={isRedacting}
             />
           )}
           <p className="profile__form-label profile__form-error-msg">
@@ -102,12 +114,22 @@ export default function Profile({ handleEditProfile, handleSignOut }) {
             {errors.email || ""}
           </p>
         </form>
+        <p
+          className={`profile__form-label profile__comment ${
+            errors.misc ? "profile__form-input_invalid" : ""
+          }`}
+        >
+          {errors.misc || comment || ""}
+        </p>
         {!isRedacting ? (
           <div className="profile__button-wrapper">
             <button
               type="button"
               className="profile__button profile__button_redact"
-              onClick={toggleIsRedacting}
+              onClick={() => {
+                toggleIsRedacting(true);
+                setComment("");
+              }}
             >
               Редактировать
             </button>

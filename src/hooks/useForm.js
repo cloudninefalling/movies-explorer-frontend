@@ -3,6 +3,7 @@ import React from "react";
 export default function useForm(inputCount) {
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
+  const [comment, setComment] = React.useState("");
 
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -95,5 +96,7 @@ export default function useForm(inputCount) {
     setErrors,
     validate,
     isValid,
+    comment,
+    setComment,
   };
 }
