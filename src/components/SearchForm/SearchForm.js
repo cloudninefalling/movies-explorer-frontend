@@ -22,14 +22,17 @@ export default function SearchForm({ query, setQuery, handleSearch, isSaved }) {
 
   const toggleShortsOnly = (isChecked) => {
     setIsShortsOnly(isChecked);
-    setQuery((prev) => ({
-      ...prev,
+    setQuery(() => ({
+      value: inputValue,
       isShortsOnly: isChecked,
     }));
-    localStorage.setItem(
-      "query",
-      JSON.stringify({ value: query.value, isShortsOnly: isChecked })
-    );
+    if (!isSaved) {
+      localStorage.setItem(
+        "query",
+        JSON.stringify({ value: inputValue, isShortsOnly: isChecked })
+      );
+      if (!localStorage.getItem("movies")) handleSearch();
+    }
   };
 
   const handleChange = (event) => {
