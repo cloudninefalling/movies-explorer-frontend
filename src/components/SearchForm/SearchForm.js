@@ -2,24 +2,55 @@ import "./SearchForm.css";
 import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function SearchForm({ query, setQuery }) {
-  const [isShortsOnly, setIsShortsOnly] = React.useState(false);
+export default function SearchForm({ query, setQuery, handleSearch, isSaved }) {
+  const getQueryValue = () => {
+    const query = localStorage.getItem("query");
+    return query ? JSON.parse(query).value : "";
+  };
+
+  const getToggleValue = () => {
+    const query = localStorage.getItem("query");
+    return query ? JSON.parse(query).isShortsOnly : false;
+  };
+
+  const [isShortsOnly, setIsShortsOnly] = React.useState(
+    !isSaved ? getToggleValue() : false
+  );
+  const [inputValue, setInputValue] = React.useState(
+    !isSaved ? getQueryValue() : ""
+  );
 
   const toggleShortsOnly = (isChecked) => {
     setIsShortsOnly(isChecked);
-    setQuery((prev) => ({
-      ...prev,
+    setQuery(() => ({
+      value: inputValue,
       isShortsOnly: isChecked,
     }));
+    if (!isSaved) {
+      localStorage.setItem(
+        "query",
+        JSON.stringify({ value: inputValue, isShortsOnly: isChecked })
+      );
+      if (!localStorage.getItem("movies")) handleSearch();
+    }
   };
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setQuery({ value: value || "", isShortsOnly });
+    setInputValue(value);
+    isSaved ?? setQuery({ value: inputValue, isShortsOnly });
   };
 
   function handleSubmit(e) {
     e.preventDefault();
+    setQuery({ value: inputValue, isShortsOnly });
+    if (!isSaved) {
+      localStorage.setItem(
+        "query",
+        JSON.stringify({ value: inputValue, isShortsOnly })
+      );
+      if (!localStorage.getItem("movies")) handleSearch();
+    }
   }
 
   return (
@@ -32,15 +63,18 @@ export default function SearchForm({ query, setQuery }) {
           name="name"
           autoComplete="off"
           onChange={handleChange}
-          value={query.value || ""}
+          value={inputValue}
         />
         <button
-          type="button"
+          type="submit"
           className="search-form__submit-btn"
           aria-label="искать"
         />
       </div>
-      <FilterCheckbox toggleCheckbox={toggleShortsOnly} />
+      <FilterCheckbox
+        toggleCheckbox={toggleShortsOnly}
+        isChecked={isShortsOnly}
+      />
     </form>
   );
 }

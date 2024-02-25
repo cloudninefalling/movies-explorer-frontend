@@ -28,6 +28,7 @@
   font-weight: 500;
   line-height: normal;
   margin: 0;
+  min-height: 28px;
 }
 
 .profile__form-separator {
@@ -74,11 +75,14 @@
   margin: 1px 0;
 }
 
+.profile__comment {
+  margin: auto 0 20px;
+}
+
 .profile__button-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: auto;
 }
 
 .profile__button {
@@ -121,7 +125,6 @@
   line-height: normal;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
-  margin-top: auto;
 }
 
 .profile__submit-btn_inactive {
@@ -161,9 +164,8 @@
     margin-top: 80px;
   }
 
-  .profile__button-wrapper,
   .profile__submit-btn {
-    margin-top: auto;
+    max-width: 100%;
   }
 
   .profile__button {

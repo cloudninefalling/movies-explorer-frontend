@@ -3,14 +3,26 @@ import AuthForm from "../AuthForm/AuthForm";
 import "./Register.css";
 import React from "react";
 import useForm from "../../hooks/useForm";
+import MainApi from "../../utils/MainApi";
 
-export default function Register() {
+const { signUp } = MainApi();
+
+export default function Register({ handleLogIn }) {
   const navigate = useNavigate();
 
-  const { values, errors, handleChange, isValid } = useForm(3);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/signin");
+  const { values, errors, setErrors, handleChange, isValid } = useForm(3);
+  const handleSubmit = () => {
+    return signUp(values)
+      .then(() =>
+        handleLogIn(values).then(() => navigate("/movies", { replace: true }))
+      )
+      .catch((err) => {
+        if (err.validation) {
+          setErrors((prev) => ({ ...prev, misc: "Некорректный Email" }));
+          return;
+        }
+        setErrors((prev) => ({ ...prev, misc: err.message }));
+      });
   };
 
   return (

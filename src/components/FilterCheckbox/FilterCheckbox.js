@@ -1,6 +1,6 @@
 import "./FilterCheckbox.css";
 
-export default function FilterCheckbox({ toggleCheckbox }) {
+export default function FilterCheckbox({ toggleCheckbox, isChecked }) {
   function handleChange(e) {
     toggleCheckbox(e.target.checked);
   }
@@ -13,6 +13,7 @@ export default function FilterCheckbox({ toggleCheckbox }) {
         id="toggle-switch__checkbox"
         className="toggle-switch__checkbox"
         onChange={handleChange}
+        checked={isChecked}
       />
       <label htmlFor="toggle-switch__checkbox" className="toggle-switch__label">
         Короткометражки

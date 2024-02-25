@@ -1,37 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-export default function Profile({ user, handleEditProfile, logOut }) {
+export default function Profile({ handleEditProfile, handleSignOut }) {
   const [isRedacting, setIsRedacting] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const navigate = useNavigate();
-  const { handleChange, values, setValues, errors } = useForm();
+  const {
+    handleChange,
+    values,
+    setValues,
+    errors,
+    setErrors,
+    comment,
+    setComment,
+  } = useForm();
+  const currentUser = useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    setValues(user);
-  }, [user, setValues]);
+    setValues(currentUser);
+  }, [currentUser, setValues]);
 
   const toggleIsRedacting = (desiredState) => {
     setIsRedacting(desiredState);
   };
 
   const handleLogOut = () => {
-    logOut();
-    navigate("/signin");
+    handleSignOut().then(navigate("/signin")).catch(console.log);
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleEditProfile(values);
-    toggleIsRedacting(false);
+    setIsSubmitting(true);
+    handleEditProfile(values)
+      .then(() => {
+        toggleIsRedacting(false);
+        setComment("Профиль успешно обновлен");
+      })
+      .catch((err) => {
+        setErrors((prev) => ({ ...prev, misc: err }));
+      })
+      .finally(() => setIsSubmitting(false));
   }
 
   return (
     <main className="profile">
       <section className="profile__wrapper">
-        <h1 className="profile__title">{`Привет, ${user.name}!`}</h1>
+        <h1 className="profile__title">
+          {currentUser.name ? `Привет, ${currentUser.name}!` : ""}
+        </h1>
         <form
           noValidate
           className="profile__form"
@@ -46,7 +66,7 @@ export default function Profile({ user, handleEditProfile, logOut }) {
             Имя
           </label>
           {!isRedacting ? (
-            <p className="profile__form-input">{user.name}</p>
+            <p className="profile__form-input">{currentUser.name}</p>
           ) : (
             <input
               name="name"
@@ -60,6 +80,7 @@ export default function Profile({ user, handleEditProfile, logOut }) {
               onChange={handleChange}
               required
               autoComplete="off"
+              autoFocus={isRedacting}
             />
           )}
           <p className="profile__form-label profile__form-error-msg">
@@ -73,7 +94,7 @@ export default function Profile({ user, handleEditProfile, logOut }) {
             Email
           </label>
           {!isRedacting ? (
-            <p className="profile__form-input">{user.email}</p>
+            <p className="profile__form-input">{currentUser.email}</p>
           ) : (
             <input
               name="email"
@@ -93,12 +114,22 @@ export default function Profile({ user, handleEditProfile, logOut }) {
             {errors.email || ""}
           </p>
         </form>
+        <p
+          className={`profile__form-label profile__comment ${
+            errors.misc ? "profile__form-input_invalid" : ""
+          }`}
+        >
+          {errors.misc || comment || ""}
+        </p>
         {!isRedacting ? (
           <div className="profile__button-wrapper">
             <button
               type="button"
               className="profile__button profile__button_redact"
-              onClick={toggleIsRedacting}
+              onClick={() => {
+                toggleIsRedacting(true);
+                setComment("");
+              }}
             >
               Редактировать
             </button>
@@ -113,7 +144,10 @@ export default function Profile({ user, handleEditProfile, logOut }) {
         ) : (
           <button
             className={`profile__submit-btn ${
-              Object.keys(errors).length > 0
+              Object.keys(errors).length > 0 ||
+              (values.name === currentUser.name &&
+                values.email === currentUser.email) ||
+              isSubmitting
                 ? "profile__submit-btn_inactive"
                 : ""
             }`}

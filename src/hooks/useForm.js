@@ -3,6 +3,7 @@ import React from "react";
 export default function useForm(inputCount) {
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
+  const [comment, setComment] = React.useState("");
 
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -74,16 +75,17 @@ export default function useForm(inputCount) {
     switch (name) {
       case "name":
         validateName(value);
-        return;
+        break;
       case "email":
         validateEmail(value);
-        return;
+        break;
       case "password":
         validatePassword(value);
-        return;
+        break;
       default:
-        return;
+        break;
     }
+    delete errors.misc;
   };
 
   return {
@@ -91,7 +93,10 @@ export default function useForm(inputCount) {
     setValues,
     handleChange,
     errors,
+    setErrors,
     validate,
     isValid,
+    comment,
+    setComment,
   };
 }
