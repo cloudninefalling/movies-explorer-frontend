@@ -2,6 +2,8 @@
 
 Ссылка на проект: https://movies.nomoredomainsmonster.ru/
 
+![image](https://github.com/cloudninefalling/movies-explorer-frontend/assets/126521847/aa1d4349-3dd1-4f9c-b8c2-3ddbea94e3ef)
+
 # Функциональность:
 
 - Аутентификация пользователей;
